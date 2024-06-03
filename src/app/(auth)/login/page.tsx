@@ -1,10 +1,24 @@
+"use client";
 import Link from "next/link";
+import React from "react";
+import { json } from "stream/consumers";
 
 export default function LoginPage() {
+  const handleLogin = (e: any) => {
+    e.preventDefault();
+    fetch("/api/auth/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email: e.currentTarget.email.value,
+        password: e.currentTarget.password.value,
+      }),
+    });
+  };
+
   return (
     <div className="h-screen flex w-100 justify-center items-center">
       <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form className="space-y-6" action="#">
+        <form className="space-y-6" onSubmit={(e) => handleLogin}>
           <h3 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
           <div>
             <label htmlFor="email" className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">
@@ -40,9 +54,7 @@ export default function LoginPage() {
           </button>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?{" "}
-            <Link
-             href="/register"
-              className="text-blue-700 hover:underline dark:text-blue-500">
+            <Link href="/register" className="text-blue-700 hover:underline dark:text-blue-500">
               Create account
             </Link>
           </div>
