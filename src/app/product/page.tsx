@@ -16,12 +16,12 @@ export default async function ProductPage(props: ProductPageProps) {
         products.data.map((products: any) => (
           <Link
            href={`/product/detail/${products.id}`}
-           key={products.id} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-5">
+           key={products.id} className="w-11/12 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-5">
 
               <img className="p-8 rounded-t-lg object:cover h-96 w-full" src={products.image} alt="product image" />
             <div className="px-5 pb-5">
 
-                <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white truncate">{products.title}</h5>
+                <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white truncate">{products.name}</h5>
 
               <div className="flex items-center justify-between mt-3">
                 <span className="text-3xl font-bold text-gray-900 dark:text-white">$ {products.price}</span>
