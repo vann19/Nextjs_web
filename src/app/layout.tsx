@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "./navbar";
 import { usePathname } from "next/navigation";
+import  { SessionProvider } from "next-auth/react"
 
 
 
@@ -17,15 +18,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // const [state, setstate] = useState(0);
   const pathname = usePathname();
   return (
     <html lang="en">
       <body className={inter.className}>
-        {!disableNavbar.includes(pathname) && <Navbar/> }
-        {/* <div>Hello world {state}</div>
-        <button onClick={() => setstate(state + 1)}>+</button> */}
-        {children}
+        <SessionProvider>
+          {!disableNavbar.includes(pathname) && <Navbar/> }
+          {children}
+        </SessionProvider>
       </body>
     </html>
   );
