@@ -30,7 +30,7 @@ export default function LoginPage() {
   return (
     <div className="h-screen flex w-100 justify-center items-center">
       <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form className="space-y-6" onSubmit={(e) => handleLogin}>
+        <form className="space-y-6" onSubmit={(e) => handleLogin(e)}>
           <h3 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
           <div>
             <label htmlFor="email" className="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">
