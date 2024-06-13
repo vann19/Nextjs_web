@@ -1,6 +1,7 @@
 import { addDoc, collection, doc, getDoc, getDocs, getFirestore, query, where } from "firebase/firestore";
 import app from "./init";
 import bcrypt from "bcrypt";
+import Email from "next-auth/providers/email";
 
 const firestore = getFirestore(app);
 export async function retrieveData(collectionName: string) {
@@ -47,3 +48,36 @@ export async function register(
     }
   }
 }
+
+// cara menghubungkan login systes yang sudah pernah di buat dengan data yang sudah di register kan di database
+
+export async function login(data: {email:string}) {
+  const q = query(
+  collection(firestore , "users"),
+  where("email", "==", data.email),
+  );
+  const snapshot = await getDocs(q);
+  const user = snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }))
+
+  if(user) {
+    return user[0];
+  } else {
+    return null;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
