@@ -5,10 +5,13 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 
-export default function LoginPage() {
+export default function LoginPage( {searchParams} : any ) {
   const {push} = useRouter();
   const [error, setError] = useState("");
   const [isLoading, SetIsLoading] = useState(false);
+
+  const callbackUrl =  searchParams.callbackUrl || "/";
+
   const handleLogin = async (e: any) => {
     e.preventDefault();
     setError("");
@@ -18,12 +21,12 @@ export default function LoginPage() {
             redirect: false,
             email: e.target.email.value,
             password: e.target.password.value,
-            callbackUrl: "/dashboard",
+            callbackUrl
         })
         if(!res?.error) {
             e.target.reset();
             SetIsLoading(false);
-            push("/dashboard");
+            push(callbackUrl);
         }   else {
             SetIsLoading(false);
             console.log(res);
