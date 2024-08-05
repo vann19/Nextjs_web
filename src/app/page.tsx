@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import next from "next";
+
 
 
 export const metadata: Metadata = {
