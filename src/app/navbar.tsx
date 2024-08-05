@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 
+
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -18,8 +19,8 @@ export default function Navbar() {
           <Link href="/profile">
             <li className={`mr-3 ${pathname === "/profile" ? "text-blue-300" : "text-white"} cursor-pointer`}>Profile</li>
           </Link>
-          <Link href="/profile/about">
-            <li className={`mr-3 ${pathname === "/profile/about" ? "text-blue-300" : "text-white"} cursor-pointer`}>About</li>
+          <Link href="/about">
+            <li className={`mr-3 ${pathname === "/about" ? "text-blue-300" : "text-white"} cursor-pointer`}>About</li>
           </Link>
         </ul>
       </div>

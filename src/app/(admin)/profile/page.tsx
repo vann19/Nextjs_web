@@ -4,7 +4,7 @@ export default function ProfilePage() {
     const { data: session }: { data: any; } = useSession();
     return (
         <div>
-            <h1>ini halaman profil</h1>
+            <h1>ini halaman profile</h1>
             <h2>{session?.user?.fullname}</h2>
         </div>
     )
