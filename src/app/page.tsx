@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 
 
 
+
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
+    
+  ),
   title: "Home",
   description: "aplikasi untuk belajar nextjs",
   authors: [{ name: "Fansyaode19", url: "https://github.com/vann19" }],
